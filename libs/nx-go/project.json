@@ -1,0 +1,33 @@
+{
+  "root": "libs/nx-go",
+  "sourceRoot": "libs/nx-go/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/nx-go",
+        "main": "libs/nx-go/src/index.ts",
+        "tsConfig": "libs/nx-go/tsconfig.lib.json",
+        "assets": ["libs/nx-go/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/nx-go/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/nx-go"],
+      "options": {
+        "jestConfig": "libs/nx-go/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
